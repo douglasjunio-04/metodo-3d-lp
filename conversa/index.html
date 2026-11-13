@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desafio Pernas Leves 21 · Converse com a Paula</title>
+<meta name="description" content="Responda 4 perguntas rápidas e conheça o Desafio Pernas Leves 21: treinos de até 30 minutos em casa e alimentação anti-inflamatória para mulheres com lipedema.">
+<meta name="theme-color" content="#120B0E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Desafio Pernas Leves 21 · Método 3D">
+<meta property="og:description" content="Responda 4 perguntas rápidas e desbloqueie a condição especial.">
+<meta property="og:image" content="../assets/hero-antes-depois.webp">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
+<link rel="preload" as="image" href="../assets/paula-alencar.webp">
+<link rel="preload" href="../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/anton-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/dm-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:500;font-display:swap;src:url(../assets/fonts/dm-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:700;font-display:swap;src:url(../assets/fonts/dm-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:800;font-display:swap;src:url(../assets/fonts/dm-sans-latin-800-normal.woff2) format('woff2')}
+
+:root{
+  --ink:#120B0E; --ink-2:#1D1418; --cream:#FFF6EF; --paper:#F6EDE6;
+  --coral:#FF4F5A; --coral-dk:#E23545; --orange:#FF7A45; --sun:#FFD84D;
+  --text:#1E1216; --soft:#6B585E; --mine:#FFE1D6;
+  --display:'Anton',Impact,'Arial Narrow',sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+
+.app{position:relative;max-width:520px;height:100%;height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:var(--paper);
+  background-image:radial-gradient(rgba(30,18,22,.05) 1.2px,transparent 1.2px);background-size:18px 18px;box-shadow:0 0 80px rgba(0,0,0,.5)}
+
+/* Cabeçalho */
+.top{flex:none;background:var(--ink);color:#fff;padding:10px 14px 0;padding-top:calc(10px + env(safe-area-inset-top))}
+.top-row{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--coral)}
+.who{flex:1;min-width:0}
+.who b{display:block;font:800 16px/1.2 var(--body)}
+.who span{font:500 12.5px/1.3 var(--body);color:#CDBDC2}
+.skip{flex:none;font:700 12px/1 var(--body);color:var(--sun);text-decoration:none;border:1px solid rgba(255,216,77,.4);border-radius:100px;padding:8px 11px}
+.progress{margin-top:10px;padding-bottom:10px}
+.progress-label{display:flex;justify-content:space-between;font:700 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#CDBDC2;margin-bottom:6px}
+.progress-label b{color:var(--sun)}
+.bar{height:7px;border-radius:10px;background:rgba(255,255,255,.12);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--coral),var(--orange),var(--sun));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
+/* Conversa */
+.chat{flex:1;overflow-y:auto;padding:16px 12px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.day{display:table;margin:0 auto 14px;font:700 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--soft);background:rgba(255,255,255,.75);padding:7px 12px;border-radius:8px}
+.msg{display:flex;margin:4px 0;animation:pop .28s ease-out both}
+.msg.me{justify-content:flex-end}
+.bubble{position:relative;max-width:86%;padding:9px 12px 8px;border-radius:14px;background:#fff;box-shadow:0 1px 1.5px rgba(30,18,22,.12);font-size:15.5px;line-height:1.45}
+.msg.them+.msg.them .bubble{border-top-left-radius:6px}
+.msg.them .bubble{border-top-left-radius:4px}
+.msg.me .bubble{background:var(--mine);border-top-right-radius:4px}
+.bubble .time{float:right;margin:6px 0 -4px 10px;font-size:11px;color:#9A8990}
+.msg.me .time::after{content:' ✓✓';color:#4FA3E0;letter-spacing:-2px}
+.bubble b{font-weight:800}
+.bubble.wide{max-width:94%;padding:6px}
+.bubble.wide .time{margin-right:6px}
+.bubble img{border-radius:10px}
+.cap{padding:8px 6px 2px;font-size:12px;color:var(--soft);line-height:1.4}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+
+.typing .bubble{padding:12px 14px}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#B5A5AB;animation:blink 1.1s infinite}
+.dots i:nth-child(2){animation-delay:.18s}.dots i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+
+/* Cartões especiais dentro da conversa */
+.headline{background:var(--ink);color:#fff;border-radius:12px;padding:20px 18px 18px}
+.headline h1{margin:0;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:34px;line-height:1.02}
+.headline h1 span{color:var(--coral)}
+.headline p{margin:12px 0 0;font:800 16px/1.35 var(--body);color:var(--sun)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.compare div{border-radius:10px;padding:12px 10px;font-size:13.5px;line-height:1.4}
+.compare h4{margin:0 0 8px;font:800 11px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase}
+.compare ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.compare .bad{background:#F1E8E3;color:var(--soft)}
+.compare .good{background:var(--ink);color:#fff}
+.compare .good h4{color:var(--coral)}
+.steps{display:grid;gap:6px}
+.steps div{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border-radius:10px;padding:10px}
+.steps b.n{flex:none;font-family:var(--display);font-weight:400;font-size:30px;line-height:1;color:var(--coral);width:22px}
+.steps strong{display:block;font:800 13px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase}
+.steps p{margin:2px 0 0;font-size:14px;color:var(--soft)}
+.reel{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.reel::-webkit-scrollbar{display:none}
+.reel img{flex:none;height:210px;width:auto;scroll-snap-align:start}
+.list{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.list li{display:flex;gap:8px}
+.list li::before{content:'✅';flex:none}
+.list li.pro::before{content:'⭐'}
+
+.unlock{background:linear-gradient(135deg,var(--coral),var(--orange));color:#fff;border-radius:12px;padding:18px 16px;text-align:center}
+.unlock .big{font-family:var(--display);text-transform:uppercase;font-size:30px;line-height:1.05}
+.unlock p{margin:6px 0 0;font-weight:700}
+
+.plans{display:grid;gap:8px}
+.plan{border-radius:12px;padding:16px 14px;text-align:center;background:var(--paper);border:1.5px solid rgba(30,18,22,.08)}
+.plan.pro{background:var(--ink);color:#fff;border:2px solid var(--coral)}
+.plan .tag{display:inline-block;font:800 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:100px;background:var(--sun);color:var(--ink);margin-bottom:8px}
+.plan .k{font:800 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.plan.pro .k{color:var(--coral)}
+.plan .d{font-size:13.5px;margin:6px 0 4px;color:var(--soft)}
+.plan.pro .d{color:#CDBDC2}
+.plan .from{font-size:13px;color:var(--soft)}
+.plan.pro .from{color:#CDBDC2}
+.plan .from s{color:var(--coral)}
+.plan .v{display:flex;justify-content:center;align-items:flex-start;gap:3px;margin:4px 0 6px;font-family:var(--display);font-size:52px;line-height:1}
+.plan.pro .v{color:var(--sun);font-size:60px}
+.plan .v small{font-size:.42em;margin-top:.3em}
+.plan .t{font-size:12.5px;color:var(--soft);margin-bottom:12px}
+.plan.pro .t{color:#CDBDC2}
+.buy{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;padding:14px 16px;border-radius:12px;text-decoration:none;text-transform:uppercase;font:800 15px/1.1 var(--body);letter-spacing:.04em}
+.buy.main{background:linear-gradient(135deg,var(--coral),var(--orange));color:#fff;box-shadow:0 4px 0 #A81E2E;animation:pulse 2.2s ease-in-out infinite}
+.buy.alt{background:var(--ink);color:#fff;box-shadow:0 4px 0 #000}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 12px;margin-top:10px;font-size:12px;color:var(--soft)}
+
+/* Área de respostas */
+.reply{flex:none;padding:10px 12px;padding-bottom:calc(12px + env(safe-area-inset-bottom));background:rgba(246,237,230,.96);border-top:1px solid rgba(30,18,22,.08);display:flex;flex-direction:column;gap:8px;min-height:20px}
+.reply:empty{padding:0;min-height:0;border:0}
+.choice{width:100%;min-height:52px;padding:13px 16px;border:0;border-radius:14px;cursor:pointer;font:800 16px/1.2 var(--body);text-align:center;background:linear-gradient(135deg,var(--coral),var(--orange));color:#fff;box-shadow:0 4px 0 #A81E2E;animation:pop .3s ease-out both}
+.choice.ghost{background:#fff;color:var(--text);box-shadow:0 3px 0 rgba(30,18,22,.15)}
+.choice:active{transform:translateY(3px);box-shadow:none}
+.choice:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.choices-row{display:flex;gap:8px}
+.choice.small{min-height:40px;padding:9px 12px;font-size:14px;font-weight:700}
+.faq-wrap{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.choices-row .choice{flex:1}
+
+.legal{margin:18px 6px 6px;text-align:center;font-size:11.5px;line-height:1.5;color:var(--soft)}
+.legal a{color:var(--soft)}
+
+.ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:496px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;background:var(--ink-2);color:#fff;font-size:12.5px;line-height:1.4;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.ck[hidden]{display:none}
+.ck a{color:var(--sun)}
+.ck button{flex:none;min-height:40px;padding:8px 14px;border:0;border-radius:10px;background:var(--cream);font:800 13px/1 var(--body);cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){.msg,.choice,.buy.main,.dots i{animation:none}.chat{scroll-behavior:auto}}
+</style>
+<script>
+/* Meta Pixel (o mesmo da página principal) e UTMify.
+   Importante: as respostas da conversa NÃO são enviadas ao Pixel (são dados de saúde). */
+(function () {
+  var META_PIXEL_ID = '2823540948000236';
+  !function (f, b, e, v, n, t, s) {
+    if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+    t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+  }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', META_PIXEL_ID);
+  fbq('track', 'PageView');
+  var u = document.createElement('script');
+  u.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+  u.async = true; u.defer = true;
+  u.setAttribute('data-utmify-prevent-subids', '');
+  (document.head || document.documentElement).appendChild(u);
+})();
+</script>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="top-row">
+      <img class="avatar" src="../assets/paula-alencar.webp" width="88" height="88" alt="Paula Alencar">
+      <div class="who"><b>Paula Alencar · Método 3D</b><span>Desafio Pernas Leves 21</span></div>
+      <a class="skip" href="#oferta" id="skip">Ver oferta</a>
+    </div>
+    <div class="progress" aria-hidden="true">
+      <div class="progress-label"><span id="plabel">Vamos começar</span><b id="pnum">0%</b></div>
+      <div class="bar"><i id="pbar"></i></div>
+    </div>
+  </header>
+
+  <main class="chat" id="chat" aria-live="polite">
+    <span class="day">Hoje</span>
+  </main>
+
+  <div class="reply" id="reply"></div>
+</div>
+
+<div id="cookie-banner" class="ck" role="region" aria-label="Aviso de cookies" hidden>
+  <span style="flex:1">Usamos cookies para medir anúncios e melhorar sua experiência (LGPD). <a href="#privacidade">Privacidade</a></span>
+  <button type="button" id="ck-ok">Entendi</button>
+</div>
+
+<script>
+(function () {
+  /* ===== CONFIGURAÇÃO — os mesmos links da página principal ===== */
+  var CHECKOUT = {
+    basico: '',   /* Hotmart — plano Básico R$ 27 */
+    premium: ''   /* Hotmart — plano Premium R$ 37 */
+  };
+  var PRICE = { basico: 27, premium: 37 };
+  var PROMO = new Date() < new Date('2026-12-01T00:00:00-03:00') ? 'Black Friday' : 'Oferta de lançamento';
+  /* =============================================================== */
+
+  var A = '../assets/';
+  var chat = document.getElementById('chat');
+  var reply = document.getElementById('reply');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var skipped = false;
+  var aborted = false; /* vira true quando a pessoa pula para a oferta */
+
+  function now() { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce || skipped ? 0 : ms); }); }
+  function scroll() { requestAnimationFrame(function () { chat.scrollTop = chat.scrollHeight; }); }
+
+  function bubble(html, who, wide) {
+    var m = document.createElement('div');
+    m.className = 'msg ' + (who || 'them');
+    m.innerHTML = '<div class="bubble' + (wide ? ' wide' : '') + '">' + html + '<span class="time">' + now() + '</span></div>';
+    var lg = document.getElementById('legal');
+    lg ? chat.insertBefore(m, lg) : chat.appendChild(m); scroll();
+    return m;
+  }
+
+  /* Mensagem da Paula, com "digitando…" proporcional ao tamanho do texto */
+  function say(html, opts) {
+    opts = opts || {};
+    var t = document.createElement('div');
+    t.className = 'msg them typing';
+    t.innerHTML = '<div class="bubble"><span class="dots"><i></i><i></i><i></i></span></div>';
+    var lg = document.getElementById('legal');
+    lg ? chat.insertBefore(t, lg) : chat.appendChild(t); scroll();
+    var plain = html.replace(/<[^>]+>/g, '');
+    var ms = opts.wide ? 900 : Math.min(1700, 450 + plain.length * 14);
+    return wait(ms).then(function () {
+      t.remove();
+      if (opts.run && aborted) return new Promise(function () {});
+      bubble(html, 'them', opts.wide);
+      return wait(opts.after == null ? 350 : opts.after);
+    });
+  }
+
+  /* Botões de resposta: devolve o índice escolhido e mostra a resposta como mensagem dela */
+  function ask(options, row, primary, compact) {
+    if (primary == null) primary = 0;
+    return new Promise(function (resolve) {
+      reply.innerHTML = '';
+      var box = reply;
+      if (row) { box = document.createElement('div'); box.className = 'choices-row'; reply.appendChild(box); }
+      options.forEach(function (label, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'choice' + (i !== primary ? ' ghost' : '') + (compact && i !== primary ? ' small' : '');
+        b.textContent = label;
+        b.addEventListener('click', function () {
+          reply.innerHTML = '';
+          bubble(label, 'me');
+          setTimeout(function () { resolve(i); }, reduce ? 0 : 450);
+        });
+        box.appendChild(b);
+      });
+      scroll();
+    });
+  }
+
+  function progress(pct, label) {
+    document.getElementById('pbar').style.width = pct + '%';
+    document.getElementById('pnum').textContent = pct + '%';
+    if (label) document.getElementById('plabel').textContent = label;
+  }
+
+  function checkoutUrl(base) {
+    if (!base) return '#';
+    try {
+      var url = new URL(base);
+      new URLSearchParams(location.search).forEach(function (v, k) { if (!url.searchParams.has(k)) url.searchParams.set(k, v); });
+      return url.toString();
+    } catch (e) { return base; }
+  }
+  function wireCheckout(root) {
+    Array.prototype.forEach.call(root.querySelectorAll('[data-checkout]'), function (a) {
+      var plan = a.getAttribute('data-checkout');
+      a.href = checkoutUrl(CHECKOUT[plan]);
+      a.addEventListener('click', function () {
+        if (window.fbq) fbq('track', 'InitiateCheckout', { value: PRICE[plan], currency: 'BRL', content_name: 'Desafio Pernas Leves 21 BR Conversa ' + (plan === 'premium' ? 'Premium' : 'Básico') });
+      });
+    });
+  }
+
+  /* ====== Blocos de conteúdo ====== */
+  var HEADLINE = '<div class="headline"><h1>Pernas pesadas, doloridas e inchadas <span>no fim do dia?</span></h1><p>Não é preguiça. E não é falta de esforço.</p></div>';
+
+  var COMPARE = '<div class="compare">' +
+    '<div class="bad"><h4>O que costumam mandar</h4><ul><li>❌ Pular e correr</li><li>❌ Só queimar calorias</li><li>❌ Dieta de fome</li></ul></div>' +
+    '<div class="good"><h4>Método 3D</h4><ul><li>✅ Treino sem impacto</li><li>✅ Foco no inchaço e no peso</li><li>✅ Comida anti-inflamatória, sem fome</li></ul></div>' +
+    '</div>';
+
+  var BEFORE_AFTER = '<img src="' + A + 'antes.webp" width="800" height="743" alt="Aluna antes do Método 3D">' +
+    '<img src="' + A + 'depois.webp" width="800" height="756" alt="A mesma aluna depois do Método 3D" style="margin-top:6px">' +
+    '<p class="cap">Antes e depois de uma aluna. Fotos reais, publicadas com autorização. Os resultados variam de pessoa para pessoa.</p>';
+
+  var REEL = '<div class="reel">' + [1, 2, 3, 4, 5, 6].map(function (n) {
+    return '<img src="' + A + 'resultado-' + n + '.webp" alt="Resultado de aluna do Método 3D" loading="lazy">';
+  }).join('') + '</div><p class="cap">Arraste para o lado →  Resultados reais de alunas, com autorização. Os resultados variam de pessoa para pessoa.</p>';
+
+  var STEPS = '<div class="steps">' +
+    '<div><b class="n">1</b><span><strong>Drenar</strong><p>Treinos de até 30 min em casa, sem impacto, para as pernas ficarem mais leves.</p></span></div>' +
+    '<div><b class="n">2</b><span><strong>Desinflamar</strong><p>Cardápio anti-inflamatório com comida de mercado, sem passar fome.</p></span></div>' +
+    '<div><b class="n">3</b><span><strong>Definir</strong><p>Guia de 21 dias para organizar a rotina e acompanhar a evolução.</p></span></div>' +
+    '</div>';
+
+  function offerHtml() {
+    return '<div class="plans" id="oferta-card">' +
+      '<div class="plan pro"><span class="tag">Melhor custo-benefício</span><br><span class="k">Plano Premium</span>' +
+      '<p class="d">Tudo do Básico + treino na academia, hipopressiva e bônus de receitas e shots. <b style="color:#fff">Acesso vitalício.</b></p>' +
+      '<p class="from">De <s>R$ 397</s> por</p><p class="v"><small>R$</small>37</p>' +
+      '<p class="t">à vista no Pix ou em até 12x · só R$ 10 a mais</p>' +
+      '<a class="buy main" data-checkout="premium" href="#">Quero o Premium</a></div>' +
+      '<div class="plan"><span class="k">Plano Básico</span>' +
+      '<p class="d">Treinos em casa, guia de 21 dias e plano alimentar. Acesso por 12 meses.</p>' +
+      '<p class="from">De <s>R$ 197</s> por</p><p class="v"><small>R$</small>27</p>' +
+      '<p class="t">à vista no Pix ou em até 12x</p>' +
+      '<a class="buy alt" data-checkout="basico" href="#">Quero o Básico</a></div>' +
+      '</div><div class="trust"><span>🔒 Pagamento seguro</span><span>🛡️ Garantia de 7 dias</span><span>⚡ Acesso imediato</span></div>';
+  }
+
+  var FAQ = [
+    ['Como recebo o acesso?', 'Logo depois da confirmação do pagamento chega um e-mail com o acesso. No Pix e no cartão é na hora; no boleto, até 3 dias úteis. Funciona no celular, tablet e computador. 📱'],
+    ['Serve para qualquer grau?', 'Serve sim! Todos os exercícios têm adaptação do grau 1 ao grau 4. 💪'],
+    ['E se eu não gostar?', 'Você tem 7 dias de garantia. Se não gostar, é só pedir e devolvemos 100% do valor, sem precisar explicar o motivo. 🛡️'],
+    ['Substitui o médico?', 'Não. O desafio complementa o seu acompanhamento. Se tiver dúvida sobre o seu caso, converse com seu médico antes de começar. 🩺']
+  ];
+
+  function legal() {
+    var d = document.createElement('p');
+    d.className = 'legal'; d.id = 'legal';
+    d.innerHTML = '© 2026 DAAJ NEGOCIOS DIGITAIS · CNPJ [CNPJ] · Dúvidas: [EMAIL DE SUPORTE]<br>' +
+      '<a href="#termos">Termos de Uso</a> · <a href="#privacidade">Privacidade</a> · <a href="#reembolso">Reembolso</a><br>' +
+      'Este site não é afiliado ao Facebook nem à Meta. Os resultados variam de pessoa para pessoa. Este programa não substitui diagnóstico nem acompanhamento médico.';
+    chat.appendChild(d);
+  }
+
+  var offerShown = false;
+  function showOffer() {
+    if (offerShown) return Promise.resolve();
+    offerShown = true;
+    progress(100, 'Oferta desbloqueada 🎁');
+    return say('<div class="unlock"><div class="big">🎁 Você desbloqueou a condição especial</div><p>' + PROMO + ' · a partir de R$ 27</p></div>', { wide: true })
+      .then(function () { return say('Tudo o que você recebe no desafio:<ul class="list"><li>Treinos de 21 dias em casa (até 30 min)</li><li>Guia “21 dias para desinflamar as pernas”</li><li>Plano alimentar anti-inflamatório + lista de compras</li><li class="pro">Premium: treino na academia</li><li class="pro">Premium: ginástica hipopressiva (aulas de 5 min)</li><li class="pro">Premium: pack de receitas e shots</li></ul>'); })
+      .then(function () { return say('Tudo isso sairia por <s>R$ 397</s>. Mas hoje você começa <b>a partir de R$ 27</b>, pagamento único. 👇'); })
+      .then(function () {
+        var m = bubble(offerHtml(), 'them', true);
+        m.id = 'oferta';
+        wireCheckout(m);
+        return wait(700);
+      })
+      .then(function () { return say('E fica tranquila: você tem <b>7 dias de garantia</b>. Se não gostar, devolvemos 100% do valor. 🛡️'); })
+      .then(faqLoop);
+  }
+
+  function faqLoop() {
+    legal();
+    var labels = FAQ.map(function (f) { return f[0]; });
+    function loop() {
+      var p = ask(labels.concat(['Quero garantir minha vaga 🎉']), false, labels.length, true);
+      var btns = reply.querySelectorAll('.choice.small');
+      if (btns.length) { var g = document.createElement('div'); g.className = 'faq-wrap'; reply.insertBefore(g, reply.firstChild); Array.prototype.forEach.call(btns, function (b) { g.appendChild(b); }); }
+      return p.then(function (i) {
+        if (i === labels.length) {
+          return say('Perfeito! É só escolher o seu plano aqui em cima. ☝️ Te vejo do lado de dentro! 💜').then(function () {
+            var card = document.getElementById('oferta');
+            if (card) setTimeout(function () { card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 400);
+            return loop();
+          });
+        }
+        return say(FAQ[i][1]).then(loop);
+      });
+    }
+    /* os botões de dúvida ficam com estilo leve; o último em destaque */
+    return loop();
+  }
+
+  /* ====== Roteiro da conversa ====== */
+  function S(h, o) { if (aborted) return new Promise(function () {}); o = o || {}; o.run = true; return say(h, o); }
+  function Q(a, b) { if (aborted) return new Promise(function () {}); return ask(a, b); }
+  function run() {
+    return S('Oi! 👋 Que bom ter você aqui.')
+      .then(function () { return S('Eu sou a <b>Paula Alencar</b>, personal trainer especializada em mulheres com lipedema. E eu também convivo com ele.'); })
+      .then(function () { return S(HEADLINE, { wide: true }); })
+      .then(function () { return S('Posso te fazer <b>4 perguntas rápidas</b>? Leva menos de 1 minuto. ⏱️'); })
+      .then(function () { return Q(['Pode sim! 👍']); })
+
+      .then(function () { progress(10, 'Pergunta 1 de 4'); return S('No fim do dia, você sente as pernas <b>pesadas</b>, como se estivessem carregando quilos a mais?'); })
+      .then(function () { return Q(['Sim, quase todo dia', 'Às vezes'], true); })
+      .then(function (i) {
+        progress(25);
+        return S(i === 0 ? 'Imaginei… 😔 Muitas mulheres com lipedema descrevem exatamente essa sensação. E piora quando o dia é longo, né?' : 'Entendi. Muitas mulheres com lipedema contam que esse peso vai e volta, e piora nos dias mais longos.');
+      })
+
+      .then(function () { progress(30, 'Pergunta 2 de 4'); return S('Você já fez <b>dieta e academia</b> e o inchaço continuou lá, como se nada tivesse mudado?'); })
+      .then(function () { return Q(['Sim, já tentei de tudo', 'Ainda não tentei muito'], true); })
+      .then(function (i) {
+        progress(45);
+        return (i === 0 ? S('Isso é muito mais comum do que parece. E não é falta de força de vontade.') : S('Então você chegou na hora certa, antes de gastar tempo com o que não funciona.'))
+          .then(function () { return S('O lipedema é uma condição crônica, reconhecida pela OMS na CID-11. Não é gordura comum, e por isso costuma não responder do mesmo jeito a dieta restritiva e horas de cardio.'); });
+      })
+
+      .then(function () { progress(50, 'Pergunta 3 de 4'); return S('Você já deixou de usar <b>short, saia ou vestido</b>, ou recusou praia e piscina, por causa das pernas?'); })
+      .then(function () { return Q(['Sim 😔', 'Às vezes'], true); })
+      .then(function () {
+        progress(65);
+        return S('Eu sei bem como é. 💜 Eu também senti a frustração e a sensação de viver escondida. Foi por isso que criei o Método 3D.');
+      })
+
+      .then(function () { progress(70, 'Pergunta 4 de 4'); return S('Treinos comuns, <b>pulando e correndo</b>, já deixaram as pernas mais doloridas e cansadas?'); })
+      .then(function () { return Q(['Sim, pioram tudo', 'Nunca reparei'], true); })
+      .then(function () {
+        progress(85, 'Seu resultado');
+        return S('Obrigada por responder! 🙏 Agora presta atenção nisso:')
+          .then(function () { return S('<b>O problema não é você. É o método.</b> O que faz diferença é treinar e comer pensando em reduzir a inflamação, e não só em queimar calorias.'); })
+          .then(function () { return S(COMPARE, { wide: true }); })
+          .then(function () { return S('Quer ver o resultado de alunas que treinaram desse jeito?'); });
+      })
+      .then(function () { return Q(['Quero ver! 👀']); })
+      .then(function () { return S(BEFORE_AFTER, { wide: true }); })
+      .then(function () { return S(REEL, { wide: true }); })
+      .then(function () { return S('O Desafio Pernas Leves 21 funciona em <b>3 passos</b>, em 21 dias:'); })
+      .then(function () { return S(STEPS, { wide: true }); })
+      .then(function () { return S('Tudo em até <b>30 minutos por dia</b>, em casa, com adaptação do grau 1 ao grau 4. 💪'); })
+      .then(function () { return S('Preparei uma condição especial para quem chegou até aqui. Quer ver?'); })
+      .then(function () { return Q(['Quero ver a condição especial 🎁']); })
+      .then(function () { if (!aborted) return showOffer(); });
+  }
+
+  /* "Ver oferta" no topo: pula direto para os planos */
+  document.getElementById('skip').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (offerShown) {
+      var c = document.getElementById('oferta'); if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    skipped = true; aborted = true;
+    Array.prototype.forEach.call(chat.querySelectorAll('.typing'), function (t) { t.remove(); });
+    reply.innerHTML = '';
+    showOffer().catch(function () {});
+    setTimeout(function () { skipped = false; }, 50);
+  });
+
+  run();
+
+  /* Aviso de cookies */
+  var ck = document.getElementById('cookie-banner'), K = 'dpl21br_cookie_notice_v1', seen = false;
+  try { seen = localStorage.getItem(K) === 'seen'; } catch (e) {}
+  if (!seen) ck.hidden = false;
+  document.getElementById('ck-ok').addEventListener('click', function () { ck.hidden = true; try { localStorage.setItem(K, 'seen'); } catch (e) {} });
+})();
+</script>
+</body>
+</html>
