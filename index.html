@@ -933,10 +933,10 @@ footer .disclaimer{max-width:680px;margin:20px auto 0;font-size:12.5px;color:#7F
 
 <script>
 (function () {
-  /* ===== CONFIGURAÇÃO — troque aqui quando as ofertas da Hotmart (Brasil) estiverem criadas ===== */
+  /* ===== CONFIGURAÇÃO — links de checkout (Greenn) ===== */
   var CHECKOUT = {
-    basico: '',   /* Hotmart — plano Básico R$ 27. Ex.: 'https://pay.hotmart.com/P108416142N?off=XXXXXXX&checkoutMode=10' */
-    premium: ''   /* Hotmart — plano Premium R$ 37 */
+    basico: 'https://payfast.greenn.com.br/204616/offer/1ZKk3m?ch_id=144181',   /* Greenn — plano Básico R$ 27 */
+    premium: 'https://payfast.greenn.com.br/204616/offer/I7jodh'   /* Greenn — plano Premium R$ 37 */
   };
   var PRICE = { basico: 27, premium: 37 };
   var PROMO_END = new Date('2026-12-01T00:00:00-03:00'); /* depois desta data, "Black Friday" vira "Oferta de lançamento" */
@@ -955,7 +955,7 @@ footer .disclaimer{max-width:680px;margin:20px auto 0;font-size:12.5px;color:#7F
     if (!base) return null;
     try {
       var url = new URL(base);
-      params.forEach(function (v, k) { if (!url.searchParams.has(k)) url.searchParams.set(k, v); });
+      params.forEach(function (v, k) { if (k !== 'v' && !url.searchParams.has(k)) url.searchParams.set(k, v); });
       return url.toString();
     } catch (e) { return base; }
   }

@@ -22,10 +22,10 @@ Versão em conversa
 - Pixel: PageView ao abrir e InitiateCheckout no clique do plano (nome "... BR Conversa ..." para diferenciar da página principal). As respostas da conversa NÃO vão para o Pixel, porque são dados de saúde.
 
 O que falta (procure por colchetes [ ] no index.html e no conversa/index.html)
-1. Links do checkout: no fim do index.html E do conversa/index.html, em CHECKOUT, cole os links das duas ofertas novas da Hotmart (Básico R$ 27 e Premium R$ 37). Enquanto estiverem vazios, os botões dos planos não levam a lugar nenhum.
+1. (Feito) Links do checkout da Greenn no fim do index.html e do conversa/index.html, em CHECKOUT: Básico https://payfast.greenn.com.br/204616/offer/1ZKk3m?ch_id=144181 e Premium https://payfast.greenn.com.br/204616/offer/I7jodh. Para trocar, edite ali nas duas páginas.
 2. (Feito) CNPJ 64.276.353/0001-00 e e-mail suportevivafit@gmail.com no rodapé das duas páginas.
 3. Páginas de Termos de Uso, Política de Privacidade (LGPD) e Política de Reembolso (os links ainda apontam para #).
-4. Na Hotmart: configurar o Pixel nas ofertas novas e a integração com a UTMify (evento Purchase).
+4. Na Greenn: configurar o Pixel da Meta nas duas ofertas e a integração com a UTMify (evento Purchase).
 
 Publicar na Vercel
 1. Crie um repositório novo no GitHub (ex.: metodo-3d-brasil). Em "Add file" > "Upload files", arraste o CONTEÚDO desta pasta (index.html, a pasta assets e este arquivo). Clique em "Commit changes".
