@@ -16,7 +16,7 @@ Versão em conversa (teste A/B)
 
 O que falta (procure por colchetes [ ] no index.html e no conversa/index.html)
 1. Links do checkout: no fim do index.html E do conversa/index.html, em CHECKOUT, cole os links das duas ofertas novas da Hotmart (Básico R$ 27 e Premium R$ 37). Enquanto estiverem vazios, os botões dos planos não levam a lugar nenhum.
-2. CNPJ e e-mail de suporte no rodapé (nas duas páginas): [CNPJ], [EMAIL] e [EMAIL DE SUPORTE].
+2. (Feito) CNPJ 64.276.353/0001-00 e e-mail suportevivafit@gmail.com no rodapé das duas páginas.
 3. Páginas de Termos de Uso, Política de Privacidade (LGPD) e Política de Reembolso (os links ainda apontam para #).
 4. Na Hotmart: configurar o Pixel nas ofertas novas e a integração com a UTMify (evento Purchase).
 
