@@ -1,0 +1,22 @@
+DESAFIO PERNAS LEVES 21 (BRASIL) — SITE PARA A VERCEL
+
+O que está pronto
+- index.html: landing page completa em português do Brasil, visual próprio (escuro + coral).
+- Preços: Básico R$ 27 (de R$ 197) e Premium R$ 37 (de R$ 397), Pix, cartão em até 12x e boleto.
+- Garantia de 7 dias.
+- Meta Pixel 2823540948000236 (o mesmo de Portugal) e script de UTMs da UTMify.
+- Eventos: PageView e InitiateCheckout (valor em BRL, nome "Desafio Pernas Leves 21 BR ...").
+- Parâmetros do anúncio (utm_*) seguem para o checkout.
+- "Black Friday" vira "Oferta de lançamento" sozinho a partir de 01/12/2026.
+- Imagens em WebP e fontes (Anton + DM Sans) hospedadas no próprio site.
+
+O que falta (procure por colchetes [ ] no index.html)
+1. Links do checkout: no fim do index.html, em CHECKOUT, cole os links das duas ofertas novas da Hotmart (Básico R$ 27 e Premium R$ 37). Enquanto estiverem vazios, os botões dos planos não levam a lugar nenhum.
+2. CNPJ e e-mail de suporte no rodapé: [CNPJ], [EMAIL] e [EMAIL DE SUPORTE].
+3. Páginas de Termos de Uso, Política de Privacidade (LGPD) e Política de Reembolso (os links ainda apontam para #).
+4. Na Hotmart: configurar o Pixel nas ofertas novas e a integração com a UTMify (evento Purchase).
+
+Publicar na Vercel
+1. Crie um repositório novo no GitHub (ex.: metodo-3d-brasil). Em "Add file" > "Upload files", arraste o CONTEÚDO desta pasta (index.html, a pasta assets e este arquivo). Clique em "Commit changes".
+2. Na Vercel: "Add New..." > "Project" > importe o repositório novo. Framework Preset: "Other", sem comando de build. Clique em "Deploy".
+3. Commits feitos pelo terminal precisam do autor douglasjunio-04 <douglas.junior199510@gmail.com>, senão a Vercel não publica.
