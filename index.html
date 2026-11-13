@@ -2,6 +2,32 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script>
+/* ===== TESTE A/B =====
+   50% das visitantes ficam nesta página (A) e 50% vão para a conversa (B, /conversa/).
+   O sorteio fica salvo no aparelho: quem volta vê sempre a mesma versão.
+   Para forçar uma versão (ex.: testar ou mandar um anúncio só para uma delas): ?v=a ou ?v=b
+   Para desligar o teste, troque AB_ATIVO para false. */
+(function () {
+  var AB_ATIVO = true;
+  if (!AB_ATIVO) return;
+  try {
+    var q = new URLSearchParams(location.search), v = (q.get('v') || '').toLowerCase();
+    if (v !== 'a' && v !== 'b') {
+      try { v = localStorage.getItem('dpl21br_ab'); } catch (e) { v = null; }
+      if (v !== 'a' && v !== 'b') v = Math.random() < 0.5 ? 'a' : 'b';
+    }
+    try { localStorage.setItem('dpl21br_ab', v); } catch (e) {}
+    if (v === 'b') {
+      window.DPL_REDIRECT = true;
+      document.documentElement.style.visibility = 'hidden';
+      q.delete('v');
+      var qs = q.toString();
+      location.replace('/conversa/' + (qs ? '?' + qs : '') + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Desafio Pernas Leves 21 · Método 3D</title>
 <meta name="description" content="21 dias de treinos de até 30 minutos em casa e alimentação anti-inflamatória, criados por uma personal trainer que também tem lipedema. A partir de R$ 27, com garantia de 7 dias.">
@@ -390,6 +416,7 @@ footer .disclaimer{max-width:680px;margin:20px auto 0;font-size:12.5px;color:#7F
 <script>
 /* Meta Pixel (o mesmo de Portugal) e UTMify — no <head> para carregar o mais cedo possível. */
 (function () {
+  if (window.DPL_REDIRECT) return; /* vai para a conversa: o PageView dispara lá */
   var META_PIXEL_ID = '2823540948000236';
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };

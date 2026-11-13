@@ -10,7 +10,14 @@ O que está pronto
 - "Black Friday" vira "Oferta de lançamento" sozinho a partir de 01/12/2026.
 - Imagens em WebP e fontes (Anton + DM Sans) hospedadas no próprio site.
 
-Versão em conversa (teste A/B)
+Teste A/B (ligado)
+- Quem entra no endereço principal é sorteada 50/50: metade fica na página longa (A), metade vai para /conversa (B). O sorteio fica salvo no aparelho.
+- Os anúncios continuam apontando para o endereço principal; UTMs e fbclid seguem para a versão sorteada.
+- Forçar uma versão: adicione ?v=a ou ?v=b no link.
+- Desligar o teste: no topo do index.html, troque AB_ATIVO = true para false.
+- Comparar: no Gerenciador de Eventos da Meta, o InitiateCheckout tem content_name "Desafio Pernas Leves 21 BR ..." (A) ou "Desafio Pernas Leves 21 BR Conversa ..." (B).
+
+Versão em conversa
 - conversa/index.html: a mesma oferta em formato de conversa com a Paula (perguntas com botões, barra de progresso que desbloqueia a oferta). Endereço: seudominio.com/conversa
 - Pixel: PageView ao abrir e InitiateCheckout no clique do plano (nome "... BR Conversa ..." para diferenciar da página principal). As respostas da conversa NÃO vão para o Pixel, porque são dados de saúde.
 
