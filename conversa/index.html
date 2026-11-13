@@ -41,18 +41,13 @@ a{color:inherit}
   background-image:radial-gradient(rgba(30,18,22,.05) 1.2px,transparent 1.2px);background-size:18px 18px;box-shadow:0 0 80px rgba(0,0,0,.5)}
 
 /* Cabeçalho */
-.top{flex:none;background:var(--ink);color:#fff;padding:10px 14px 0;padding-top:calc(10px + env(safe-area-inset-top))}
+.top{flex:none;background:var(--ink);color:#fff;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top))}
 .top-row{display:flex;align-items:center;gap:12px}
 .avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--coral)}
 .who{flex:1;min-width:0}
 .who b{display:block;font:800 16px/1.2 var(--body)}
 .who span{font:500 12.5px/1.3 var(--body);color:#CDBDC2}
 .skip{flex:none;font:700 12px/1 var(--body);color:var(--sun);text-decoration:none;border:1px solid rgba(255,216,77,.4);border-radius:100px;padding:8px 11px}
-.progress{margin-top:10px;padding-bottom:10px}
-.progress-label{display:flex;justify-content:space-between;font:700 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#CDBDC2;margin-bottom:6px}
-.progress-label b{color:var(--sun)}
-.bar{height:7px;border-radius:10px;background:rgba(255,255,255,.12);overflow:hidden}
-.bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--coral),var(--orange),var(--sun));transition:width .6s cubic-bezier(.2,.8,.2,1)}
 
 /* Conversa */
 .chat{flex:1;overflow-y:auto;padding:16px 12px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
@@ -179,10 +174,6 @@ a{color:inherit}
       <div class="who"><b>Paula Alencar · Método 3D</b><span>Desafio Pernas Leves 21</span></div>
       <a class="skip" href="#oferta" id="skip">Ver oferta</a>
     </div>
-    <div class="progress" aria-hidden="true">
-      <div class="progress-label"><span id="plabel">Vamos começar</span><b id="pnum">0%</b></div>
-      <div class="bar"><i id="pbar"></i></div>
-    </div>
   </header>
 
   <main class="chat" id="chat" aria-live="polite">
@@ -269,12 +260,6 @@ a{color:inherit}
     });
   }
 
-  function progress(pct, label) {
-    document.getElementById('pbar').style.width = pct + '%';
-    document.getElementById('pnum').textContent = pct + '%';
-    if (label) document.getElementById('plabel').textContent = label;
-  }
-
   function checkoutUrl(base) {
     if (!base) return '#';
     try {
@@ -350,7 +335,6 @@ a{color:inherit}
   function showOffer() {
     if (offerShown) return Promise.resolve();
     offerShown = true;
-    progress(100, 'Oferta desbloqueada 🎁');
     return say('<div class="unlock"><div class="big">🎁 Você desbloqueou a condição especial</div><p>' + PROMO + ' · a partir de R$ 27</p></div>', { wide: true })
       .then(function () { return say('Tudo o que você recebe no desafio:<ul class="list"><li>Treinos de 21 dias em casa (até 30 min)</li><li>Guia “21 dias para desinflamar as pernas”</li><li>Plano alimentar anti-inflamatório + lista de compras</li><li class="pro">Premium: treino na academia</li><li class="pro">Premium: ginástica hipopressiva (aulas de 5 min)</li><li class="pro">Premium: pack de receitas e shots</li></ul>'); })
       .then(function () { return say('Tudo isso sairia por <s>R$ 397</s>. Mas hoje você começa <b>a partir de R$ 27</b>, pagamento único. 👇'); })
@@ -396,32 +380,28 @@ a{color:inherit}
       .then(function () { return S('Posso te fazer <b>4 perguntas rápidas</b>? Leva menos de 1 minuto. ⏱️'); })
       .then(function () { return Q(['Pode sim! 👍']); })
 
-      .then(function () { progress(10, 'Pergunta 1 de 4'); return S('No fim do dia, você sente as pernas <b>pesadas</b>, como se estivessem carregando quilos a mais?'); })
+      .then(function () { return S('No fim do dia, você sente as pernas <b>pesadas</b>, como se estivessem carregando quilos a mais?'); })
       .then(function () { return Q(['Sim, quase todo dia', 'Às vezes'], true); })
       .then(function (i) {
-        progress(25);
         return S(i === 0 ? 'Imaginei… 😔 Muitas mulheres com lipedema descrevem exatamente essa sensação. E piora quando o dia é longo, né?' : 'Entendi. Muitas mulheres com lipedema contam que esse peso vai e volta, e piora nos dias mais longos.');
       })
 
-      .then(function () { progress(30, 'Pergunta 2 de 4'); return S('Você já fez <b>dieta e academia</b> e o inchaço continuou lá, como se nada tivesse mudado?'); })
+      .then(function () { return S('Você já fez <b>dieta e academia</b> e o inchaço continuou lá, como se nada tivesse mudado?'); })
       .then(function () { return Q(['Sim, já tentei de tudo', 'Ainda não tentei muito'], true); })
       .then(function (i) {
-        progress(45);
         return (i === 0 ? S('Isso é muito mais comum do que parece. E não é falta de força de vontade.') : S('Então você chegou na hora certa, antes de gastar tempo com o que não funciona.'))
           .then(function () { return S('O lipedema é uma condição crônica, reconhecida pela OMS na CID-11. Não é gordura comum, e por isso costuma não responder do mesmo jeito a dieta restritiva e horas de cardio.'); });
       })
 
-      .then(function () { progress(50, 'Pergunta 3 de 4'); return S('Você já deixou de usar <b>short, saia ou vestido</b>, ou recusou praia e piscina, por causa das pernas?'); })
+      .then(function () { return S('Você já deixou de usar <b>short, saia ou vestido</b>, ou recusou praia e piscina, por causa das pernas?'); })
       .then(function () { return Q(['Sim 😔', 'Às vezes'], true); })
       .then(function () {
-        progress(65);
         return S('Eu sei bem como é. 💜 Eu também senti a frustração e a sensação de viver escondida. Foi por isso que criei o Método 3D.');
       })
 
-      .then(function () { progress(70, 'Pergunta 4 de 4'); return S('Treinos comuns, <b>pulando e correndo</b>, já deixaram as pernas mais doloridas e cansadas?'); })
+      .then(function () { return S('Treinos comuns, <b>pulando e correndo</b>, já deixaram as pernas mais doloridas e cansadas?'); })
       .then(function () { return Q(['Sim, pioram tudo', 'Nunca reparei'], true); })
       .then(function () {
-        progress(85, 'Seu resultado');
         return S('Obrigada por responder! 🙏 Agora presta atenção nisso:')
           .then(function () { return S('<b>O problema não é você. É o método.</b> O que faz diferença é treinar e comer pensando em reduzir a inflamação, e não só em queimar calorias.'); })
           .then(function () { return S(COMPARE, { wide: true }); })
