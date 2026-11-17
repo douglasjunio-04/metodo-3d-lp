@@ -242,12 +242,12 @@ a{color:inherit}
     var lg = document.getElementById('legal');
     lg ? chat.insertBefore(t, lg) : chat.appendChild(t); scroll();
     var plain = html.replace(/<[^>]+>/g, '');
-    var ms = opts.wide ? 900 : Math.min(1700, 450 + plain.length * 14);
+    var ms = opts.wide ? 500 : Math.min(1000, 300 + plain.length * 7);
     return wait(ms).then(function () {
       t.remove();
       if (opts.run && aborted) return new Promise(function () {});
       bubble(html, 'them', opts.wide);
-      return wait(opts.after == null ? 350 : opts.after);
+      return wait(opts.after == null ? 150 : opts.after);
     });
   }
 
@@ -266,7 +266,7 @@ a{color:inherit}
         b.addEventListener('click', function () {
           reply.innerHTML = '';
           bubble(label, 'me');
-          setTimeout(function () { resolve(i); }, reduce ? 0 : 450);
+          setTimeout(function () { resolve(i); }, reduce ? 0 : 200);
         });
         box.appendChild(b);
       });
@@ -341,12 +341,12 @@ a{color:inherit}
     t.innerHTML = '<div class="bubble"><span class="rec"><b></b>gravando áudio…</span></div>';
     var lg = document.getElementById('legal');
     lg ? chat.insertBefore(t, lg) : chat.appendChild(t); scroll();
-    return wait(1600).then(function () {
+    return wait(900).then(function () {
       t.remove();
       if (run && aborted) return new Promise(function () {});
       var m = bubble(voiceHtml(n), 'them');
       wireVoice(m, n);
-      return wait(1800);
+      return wait(600);
     });
   }
 
@@ -414,10 +414,9 @@ a{color:inherit}
         var m = bubble(offerHtml(), 'them', true);
         m.id = 'oferta';
         wireCheckout(m);
-        return wait(700);
+        return wait(300);
       })
       .then(function () { return sayAudio(4); })
-      .then(function () { return say('E fica tranquila: você tem <b>7 dias de garantia</b>. Se não gostar, devolvemos 100% do valor. 🛡️'); })
       .then(faqLoop);
   }
 
@@ -455,10 +454,10 @@ a{color:inherit}
   function run() {
     return S('Oi! 👋 Que bom ter você aqui.')
       .then(function () { return sayAudio(1, true); })
-      .then(function () { return S('Eu sou a <b>Paula Alencar</b>, personal trainer especializada em mulheres com lipedema. E eu também convivo com ele.'); })
+      .then(function () { return S('Sou personal trainer especializada em mulheres com lipedema. 💜'); })
       .then(function () { return S(HEADLINE, { wide: true }); })
-      .then(function () { return S('Posso te fazer <b>4 perguntas rápidas</b>? Leva menos de 1 minuto. ⏱️'); })
-      .then(function () { return Q(['Pode sim! 👍']); })
+      .then(function () { return S('São só <b>4 perguntas</b>, leva menos de 1 minuto. ⏱️'); })
+      .then(function () { return Q(['Vamos lá! 👍']); })
 
       .then(function () { return S('No fim do dia, você sente as pernas <b>pesadas</b>, como se estivessem carregando quilos a mais?'); })
       .then(function () { return Q(['Sim, quase todo dia', 'Às vezes'], true); })
@@ -476,9 +475,6 @@ a{color:inherit}
       .then(function () { return S('Você já deixou de usar <b>short, saia ou vestido</b>, ou recusou praia e piscina, por causa das pernas?'); })
       .then(function () { return Q(['Sim 😔', 'Às vezes'], true); })
       .then(function () { return sayAudio(2, true); })
-      .then(function () {
-        return S('Eu sei bem como é. 💜 Eu também senti a frustração e a sensação de viver escondida. Foi por isso que criei o Método 3D.');
-      })
 
       .then(function () { return S('Treinos comuns, <b>pulando e correndo</b>, já deixaram as pernas mais doloridas e cansadas?'); })
       .then(function () { return Q(['Sim, pioram tudo', 'Nunca reparei'], true); })
@@ -495,7 +491,7 @@ a{color:inherit}
       .then(function () { return S(STEPS, { wide: true }); })
       .then(function () { return S('Tudo em até <b>30 minutos por dia</b>, em casa, com adaptação do grau 1 ao grau 4. 💪'); })
       .then(function () { return sayAudio(3, true); })
-      .then(function () { return S('Preparei uma condição especial para quem chegou até aqui. Quer ver?'); })
+      .then(function () { return S('Quer ver? 👇'); })
       .then(function () { return Q(['Quero ver a condição especial 🎁']); })
       .then(function () { if (!aborted) return showOffer(); });
   }
